@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+  <style>
+        .image-gallery {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .thumbnails {
+            display: flex;
+        }
+
+        .thumbnail {
+            width: 100px;
+            height: auto;
+            margin: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .thumbnail:hover {
+            transform: scale(1.1); /* Scale up on hover */
+        }
+
+        .display-box {
+            margin-top: 20px;
+            display: none; /* Hide initially */
+        }
+
+        .full-image {
+            max-width: 100%;
+            max-height: 100%;
+            display: block; /* Show full image */
+        }
+    </style>
+</style>
+</head>
+<body>
+    <div class="image-gallery">
+        <div class="thumbnails">
+            <img src="author7.png" alt="Thumbnail 1" class="thumbnail">
+            <img src="author8.png"alt="Thumbnail 2" class="thumbnail">
+            <img src="author9.png"alt="Thumbnail 3" class="thumbnail">
+            <!-- Add more thumbnails as needed -->
+        </div>
+        <div class="display-box">
+            <img src="" alt="Full Image" class="full-image">
+        </div>
+    </div>
+
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    const displayBox = document.querySelector('.display-box');
+    const fullImage = document.querySelector('.full-image');
+
+    thumbnails.forEach(thumbnail => {
+        thumbnail.addEventListener('click', function() {
+            const imgSrc = this.getAttribute('src');
+            fullImage.setAttribute('src', imgSrc);
+            displayBox.style.display = 'block';
+        });
+    });
+
+    displayBox.addEventListener('click', function() {
+        displayBox.style.display = 'none';
+    });
+});
+</script>
+</body>
+</html>
